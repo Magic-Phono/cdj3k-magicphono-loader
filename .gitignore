@@ -1,0 +1,6 @@
+*.iso
+*.crc32
+*.UPD
+*.key
+.vscode/
+.DS_Store
