@@ -7,6 +7,9 @@ Magic Phono on your CDJ-3000.
 Allows booting of custom firmwares from an SD-card.
 
 The update file toggles a boot flag in non-volatile memory to allow booting firmware from an SD-card.
+
+If no bootable SD-card is present the CDJ-3000 will continue booting from internal firmware as usual.
+
 The chances of this bricking your CDJ-3000 is low as it does not update or overwrite the firmware in the CDJ,
 however there is a non-zero chance something could go wrong.
 
