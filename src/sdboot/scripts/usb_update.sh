@@ -4,48 +4,11 @@ set -xeuTo pipefail
 # Firmware file name
 FW_FILENAME=CDJ3KvSDBOOT001.UPD
 
-# Uncomment below to enable SSHd in firmware update environment
-#START_SSH_SERVER=1
-
 function clear_framebuffer() {
     fb_width=`fbset | grep geometry | cut -f2 -d' '`
     fb_height=`fbset | grep geometry | cut -f3 -d' '`
     dd if=/dev/zero of=/dev/fb0 bs=$(( ${fb_width} * 2 )) count=$(( ${fb_height} * 2 ))
 }
-
-# function safe_cp() {
-#     SRC=$1
-#     DST=$2
-
-#     mkdir -p "$(dirname "$DST")"
-#     cp "$SRC" "$DST"
-# }
-
-# function copy_pdj_payload() {
-#     OVERLAY_MEDIA=$1
-
-#     OVERLAY_MEDIA_MOUNTPOINT=$(mktemp -d)
-#     ls "$OVERLAY_MEDIA_MOUNTPOINT"
-#     mount -o rw "$OVERLAY_MEDIA" "$OVERLAY_MEDIA_MOUNTPOINT"
-
-#     PDJ_TAR_WORKDIR=$(mktemp -d)
-
-#     # extract payload package
-#     tar -zxvf $"$ISO_MOUNTPOINT"/pdj.tar.gz  -C "$PDJ_TAR_WORKDIR"
-
-#     # add ssh keys from usb to payload package
-#     if test -f $"$UPDATE_MEDIA_MOUNTPOINT"/authorized_keys; then
-#        safe_cp $"$UPDATE_MEDIA_MOUNTPOINT"/authorized_keys $"$PDJ_TAR_WORKDIR"/.ssh/authorized_keys
-#     fi
-#     tar -cvzf $"$OVERLAY_MEDIA_MOUNTPOINT"/pdj.tar.gz -C "$PDJ_TAR_WORKDIR" .
-
-#     # install ssh key for current session
-#     if ! [ -z "$START_SSH_SERVER" ]; then
-#         safe_cp $"$UPDATE_MEDIA_MOUNTPOINT"/authorized_keys /home/root/.ssh/authorized_keys
-#     fi
-
-#     umount "$OVERLAY_MEDIA_MOUNTPOINT"
-# }
 
 function enable_sd_boot() {
     echo 0 > /sys/block/mmcblk0boot1/force_ro
@@ -53,13 +16,6 @@ function enable_sd_boot() {
     fw_setenv bootcmd 'run bootcmd_sd; run bootcmd_emmc'
     echo 1 > /sys/block/mmcblk0boot1/force_ro
 }
-
-
-# Setup
-
-# clear_framebuffer
-
-# openvt -s -- echo 'Installing...'
 
 # Wait and mount
 
@@ -100,7 +56,7 @@ if [[ -b /dev/mmcblk0p5 ]]; then
     gui_image D007 "$LANGUAGE" "" >/dev/null 2>&1
 elif [[ -b /dev/mmcblk1p8 ]]; then
     # Rockchip model
-    # UNSUPPORTED
+    # !! UNSUPPORTED !!
 	gui_image D003 "Model unsupported." ${language} >/dev/null 2>&1
 	while true; do sleep 1; done;
 else
