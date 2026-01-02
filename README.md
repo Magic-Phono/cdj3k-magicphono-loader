@@ -45,7 +45,7 @@ To clean:
 ```
 
 Where `<target>` is one of:
-- `loader`: Legacy `check_apl_mode` style loader (do not use).
+- `loader`: `check_apl_mode` style loader to allow loading custom packages from USB when booting internal firmware.
 - `sdboot`: Update boot flag to allow booting firmware from an SD-card.
 
 
