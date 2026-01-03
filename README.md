@@ -10,8 +10,7 @@ The update file toggles a boot flag in non-volatile memory to allow booting firm
 
 If no bootable SD-card is present the CDJ-3000 will continue booting from internal firmware as usual.
 
-The chances of this bricking your CDJ-3000 is low as it does not update or overwrite the firmware in the CDJ,
-however there is a non-zero chance something could go wrong.
+The chances of this bricking your CDJ-3000 is low, however there is a non-zero chance something could go wrong.
 
 > [!CAUTION]
 > This tool is experimental software with the potential to brick your CDJ. **USE AT YOUR OWN RISK**.
@@ -24,8 +23,10 @@ however there is a non-zero chance something could go wrong.
 - Insert the USB key into your CDJ-3000. Enter udpate mode by pressing IN/CUE and RELOOP/EXIT while powering on the unit.
 - Once complete, you can reboot your CDJ.
 - Congratulations! You can now boot custom firmwares from an SD-card.
+- If no bootable SD-card is present the CDJ-3000 will continue booting from internal firmware as usual.
 
-# Uninstall
+
+## Uninstall
 
 TODO
 
@@ -47,7 +48,7 @@ To clean:
 Where `<target>` is one of:
 - `loader`: `check_apl_mode` style loader to allow loading custom packages from USB when booting internal firmware.
 - `sdboot`: Update boot flag to allow booting firmware from an SD-card.
-
+- `sysinfo`: Dumps system information to the screen. Does not write any non-volatile memory so is safe to use.
 
 ## License
 
