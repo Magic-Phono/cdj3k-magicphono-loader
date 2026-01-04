@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#
+# This file is part of the Magic Phono project (https://magicphono.org/).
+# Copyright (c) 2025 xorbxbx <xorbxbx@magicphono.org>
 # 
 # NOTE: Set MP_NOCLEAN=1 to leave tmp folder intact, useful for debugging.
 #
