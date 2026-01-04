@@ -1,14 +1,16 @@
 # cdj3k-magicphono-loader
 
-Magic Phono on your CDJ-3000.
-
-## Why?
+Magic Phono Loader for CDJ-3000.
 
 Allows booting of custom firmwares from an SD-card.
+
+## How does it work?
 
 The update file toggles a boot flag in non-volatile memory to allow booting firmware from an SD-card.
 
 If no bootable SD-card is present the CDJ-3000 will continue booting from internal firmware as usual.
+
+## Is it safe?
 
 The chances of this bricking your CDJ-3000 is low, however there is a non-zero chance something could go wrong.
 
@@ -16,19 +18,20 @@ The chances of this bricking your CDJ-3000 is low, however there is a non-zero c
 > This tool is experimental software with the potential to brick your CDJ. **USE AT YOUR OWN RISK**.
 
 
-## Quick guide
+## Installing
+
+### Compatibility
+
+- Compatible with Renesas SoC based CDJ-3000s.
+
+### How to Install
 
 - Download the pre-built <a href="https://github.com/Magic-Phono/cdj3k-magicphono-loader/releases/download/v1.0.0/CDJ3KvSDBOOT001.UPD">`CDJ3KvSDBOOT001.UPD`</a> update file.
 - Copy it to a FAT32 USB key. Make sure there are no other update files on the USB key.
 - Insert the USB key into your CDJ-3000. Enter udpate mode by pressing IN/CUE and RELOOP/EXIT while powering on the unit.
 - Once complete, you can reboot your CDJ.
-- Congratulations! You can now boot custom firmwares from an SD-card.
+- Congratulations! You can now boot custom firmwares from an SD-card, such as <a href="https://github.com/Magic-Phono/cdj3k-magicphono-distro" target=")blank">MagicPhono Linux</a>.
 - If no bootable SD-card is present the CDJ-3000 will continue booting from internal firmware as usual.
-
-
-## Uninstall
-
-TODO
 
 ## Building from source
 
@@ -46,9 +49,13 @@ To clean:
 ```
 
 Where `<target>` is one of:
-- `loader`: `check_apl_mode` style loader to allow loading custom packages from USB when booting internal firmware.
-- `sdboot`: Update boot flag to allow booting firmware from an SD-card.
-- `sysinfo`: Dumps system information to the screen. Does not write any non-volatile memory so is safe to use.
+
+| Target  | Information |
+| ------------- | ------------- |
+| `sdboot`  | Generates a firmware update file that will update a boot flag in non-volatile memory to enable booting from an SD-card. |
+| `loader` | `check_apl_mode` style loader to allow injecting custom packages from USB during the startup phase when booting from internal firmware. This is useful to patch or add enhancements to on-board firmware. |
+| `sysinfo` | Dumps system information to the screen. Does not write any non-volatile memory so is safe to use. |
+
 
 ## License
 
