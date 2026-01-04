@@ -53,7 +53,7 @@ Where `<target>` is one of:
 | Target  | Information |
 | ------------- | ------------- |
 | `sdboot`  | Generates a firmware update file that will update a boot flag in non-volatile memory to enable booting from an SD-card. |
-| `loader` | `check_apl_mode` style loader to allow injecting custom packages from USB during the startup phase when booting from internal firmware. This is useful to patch or add enhancements to on-board firmware. |
+| `loader` | `check_apl_mode` style loader to allow injecting custom packages from USB during the startup phase when booting from internal firmware. Useful for modding or adding enhancements to on-board firmware. |
 | `sysinfo` | Dumps system information to the screen. Does not write any non-volatile memory so is safe to use. |
 
 
