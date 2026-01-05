@@ -26,6 +26,8 @@ function sysinfo() {
     fw_printenv  | grep "dtb=" > /dev/tty$TTYNO
     fw_printenv  | grep "release" > /dev/tty$TTYNO
     fw_printenv  | grep "rev_" > /dev/tty$TTYNO
+    fw_printenv  | grep "bootcmd_sd=" > /dev/tty$TTYNO
+    fw_printenv  | grep "bootcmd=" > /dev/tty$TTYNO
     echo "" > /dev/tty$TTYNO
     lsblk -a > /dev/tty$TTYNO
 }
