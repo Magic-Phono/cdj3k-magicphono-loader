@@ -19,6 +19,7 @@ function sysinfo() {
     cat /etc/issue.net > /dev/tty$TTYNO
     dmesg | grep "Boot CPU" > /dev/tty$TTYNO
     dmesg | grep "Memory: " > /dev/tty$TTYNO
+    dmesg | grep Renesas > /dev/tty$TTYNO
     echo "" > /dev/tty$TTYNO
     fw_printenv  | grep "ver=" > /dev/tty$TTYNO
     uname -a > /dev/tty$TTYNO
