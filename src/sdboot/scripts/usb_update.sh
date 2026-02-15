@@ -13,7 +13,8 @@ function clear_framebuffer() {
 function enable_sd_boot() {
     echo 0 > /sys/block/mmcblk0boot1/force_ro
     fw_setenv bootargs_sd 'rw root=/dev/mmcblk1p1 rootfstype=ext4 rootwait loglevel=7 earlycon console=ttySC0,115200'
-    fw_setenv bootcmd 'run bootcmd_sd; run bootcmd_emmc'
+    fw_setenv bootcmd_clearimage 'mw.b 0x48080000 ff 1024; mw.b 0x48000000 ff 1024'
+    fw_setenv bootcmd 'run bootcmd_clearimage; run bootcmd_sd; run bootcmd_emmc'
     echo 1 > /sys/block/mmcblk0boot1/force_ro
 }
 
